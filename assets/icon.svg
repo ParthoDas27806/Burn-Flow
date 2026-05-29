@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a00"/>
+      <stop offset="100%" style="stop-color:#0D0D0D"/>
+    </linearGradient>
+    <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6520"/>
+      <stop offset="100%" style="stop-color:#FF4500"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE066"/>
+      <stop offset="35%" style="stop-color:#FFB300"/>
+      <stop offset="70%" style="stop-color:#FF6520"/>
+      <stop offset="100%" style="stop-color:#FF2200"/>
+    </linearGradient>
+    <linearGradient id="innerFlameGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="50%" style="stop-color:#FFE8A0"/>
+      <stop offset="100%" style="stop-color:#FFB300"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="hexClip">
+      <polygon points="256,28 468,148 468,364 256,484 44,364 44,148"/>
+    </clipPath>
+  </defs>
+
+  <!-- Dark background circle -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Outer hex ring glow -->
+  <polygon points="256,28 468,148 468,364 256,484 44,364 44,148"
+    fill="none" stroke="#FF4500" stroke-width="3" opacity="0.3"/>
+
+  <!-- Hex body -->
+  <polygon points="256,42 454,152 454,360 256,470 58,360 58,152"
+    fill="url(#hexGrad)" opacity="0.15"/>
+
+  <!-- Hex border -->
+  <polygon points="256,42 454,152 454,360 256,470 58,360 58,152"
+    fill="none" stroke="url(#hexGrad)" stroke-width="6"/>
+
+  <!-- Flame glow layer -->
+  <g filter="url(#glow)" opacity="0.6">
+    <path d="M256 430
+      C220 430 172 410 158 370
+      C144 330 162 295 175 268
+      C188 241 195 218 188 192
+      C215 212 224 238 218 265
+      C230 248 234 225 228 198
+      C252 220 264 252 258 282
+      C268 265 272 242 266 216
+      C295 242 310 278 304 316
+      C316 302 322 282 318 260
+      C344 288 356 326 348 366
+      C340 398 312 430 256 430Z"
+      fill="#FF6520"/>
+  </g>
+
+  <!-- Main flame -->
+  <path d="M256 422
+    C224 422 180 403 167 365
+    C154 327 170 294 183 268
+    C194 245 200 222 194 198
+    C218 216 228 242 222 268
+    C233 250 237 228 232 202
+    C254 224 266 255 260 284
+    C270 267 274 244 268 218
+    C296 244 310 280 305 316
+    C318 300 323 280 320 258
+    C344 286 354 322 347 360
+    C340 395 312 422 256 422Z"
+    fill="url(#flameGrad)" filter="url(#softGlow)"/>
+
+  <!-- Inner bright flame core -->
+  <path d="M256 400
+    C238 400 216 387 208 364
+    C200 341 210 320 220 302
+    C228 286 232 268 228 250
+    C244 262 250 280 246 298
+    C254 284 256 266 252 248
+    C268 264 276 286 272 310
+    C280 298 282 282 280 266
+    C296 284 302 308 298 334
+    C306 324 308 310 306 296
+    C320 314 324 338 318 362
+    C312 386 290 400 256 400Z"
+    fill="url(#innerFlameGrad)" opacity="0.85"/>
+
+  <!-- Tiny white hot core -->
+  <ellipse cx="256" cy="310" rx="18" ry="26" fill="white" opacity="0.5"/>
+
+  <!-- Bottom arc / base of flame -->
+  <ellipse cx="256" cy="422" rx="52" ry="10" fill="#FF2200" opacity="0.35"/>
+</svg>
