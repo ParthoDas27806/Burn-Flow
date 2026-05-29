@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BurnFlow — Your Body. Your Goal. Your Plan.</title>
+  <meta name="description" content="BurnFlow is a personalised fitness app for every goal — lose fat, gain muscle, maintain, balance your diet, build endurance, or improve flexibility."/>
+  <meta name="theme-color" content="#FF4500"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+
+  <!-- Open Graph (social sharing preview) -->
+  <meta property="og:title" content="BurnFlow — Your Body. Your Goal. Your Plan."/>
+  <meta property="og:description" content="Personalised fitness plans for every kind of person. Lose fat, gain muscle, maintain, balance, endure, or find wellness."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="assets/icon.svg"/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav>
+  <a class="nav-brand" href="#">
+    <img class="nav-icon" src="assets/favicon.svg" alt="BurnFlow icon"/>
+    <div class="nav-wordmark">
+      <span class="nav-name">BURNFLOW</span>
+      <span class="nav-tagline">Your Body. Your Goal. Your Plan.</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#goal-select">My Goal</a>
+    <a href="#steps">Plan</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#nutrition">Meals</a>
+    <a href="#workout">Workout</a>
+    <a href="#tracker">Track</a>
+    <a href="#tips">Tips</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('goal-select').scrollIntoView({behavior:'smooth'})">Choose My Goal</button>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- App Icon in Hero -->
+  <div class="hero-icon-wrap">
+    <div class="hero-icon-ring"></div>
+    <img class="hero-icon" src="assets/icon.svg" alt="BurnFlow"/>
+  </div>
+
+  <div class="hero-tag">For Every Body. Every Goal.</div>
+
+  <h1>YOUR BODY.<br>YOUR GOAL.<br><em>YOUR PLAN.</em></h1>
+
+  <!-- Tagline -->
+  <div class="hero-tagline-wrap">
+    <span class="hero-tagline">Flow with purpose. Burn with intention.</span>
+  </div>
+
+  <p class="hero-sub">Whether you want to lose fat, gain muscle, maintain your physique, balance your diet, build endurance, or simply feel better — BurnFlow has a personalised plan for you.</p>
+
+  <div class="hero-cta-wrap">
+    <button class="btn-fire" onclick="document.getElementById('goal-select').scrollIntoView({behavior:'smooth'})">Pick My Goal</button>
+    <button class="btn-ghost" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Check My Numbers</button>
+  </div>
+</section>
+
+<!-- ══════════════════ GOAL SELECTOR ══════════════════ -->
+<section id="goal-select">
+  <div class="container">
+    <p class="gs-title">WHAT'S YOUR GOAL?</p>
+    <p class="gs-sub">Select one — and the entire app will personalise itself for you.</p>
+    <div class="goal-grid" id="goalGrid">
+      <div class="goal-btn active" data-goal="lose" onclick="setGoal('lose',this)">
+        <span class="g-icon">🔥</span>
+        <span class="g-name">Lose Fat</span>
+        <span class="g-desc">Burn fat, reduce weight, get leaner</span>
+      </div>
+      <div class="goal-btn" data-goal="gain" onclick="setGoal('gain',this)">
+        <span class="g-icon">💪</span>
+        <span class="g-name">Gain Weight</span>
+        <span class="g-desc">Build muscle mass & healthy weight</span>
+      </div>
+      <div class="goal-btn" data-goal="maintain" onclick="setGoal('maintain',this)">
+        <span class="g-icon">⚖️</span>
+        <span class="g-name">Maintain</span>
+        <span class="g-desc">Keep your current physique & fitness</span>
+      </div>
+      <div class="goal-btn" data-goal="balance" onclick="setGoal('balance',this)">
+        <span class="g-icon">🥗</span>
+        <span class="g-name">Balance Diet</span>
+        <span class="g-desc">Fix eating habits, improve nutrition</span>
+      </div>
+      <div class="goal-btn" data-goal="endurance" onclick="setGoal('endurance',this)">
+        <span class="g-icon">🏃</span>
+        <span class="g-name">Build Endurance</span>
+        <span class="g-desc">Improve stamina, cardio & energy</span>
+      </div>
+      <div class="goal-btn" data-goal="flex" onclick="setGoal('flex',this)">
+        <span class="g-icon">🧘</span>
+        <span class="g-name">Flexibility & Wellness</span>
+        <span class="g-desc">Reduce stress, improve mobility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="statsBar"></div>
+
+<!-- ══════════════════ STEPS ══════════════════ -->
+<section id="steps" style="background:var(--dark)">
+  <div class="container">
+    <div class="sec-label">Step-by-Step Plan</div>
+    <div class="goal-banner" id="stepsBanner">🔥 Fat Loss Plan</div>
+    <h2 class="sec-title">YOUR PERSONALISED<br>ACTION PLAN</h2>
+    <p class="sec-sub" id="stepsSub">Follow these science-backed steps tailored to your goal.</p>
+    <div class="steps-grid section-dynamic" id="stepsGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ CALCULATOR ══════════════════ -->
+<section id="calculator">
+  <div class="container">
+    <div class="sec-label">Smart Calculator</div>
+    <h2 class="sec-title">YOUR NUMBERS,<br>YOUR BASELINE</h2>
+    <p class="sec-sub">Enter your stats — we'll calculate your BMI, TDEE, and a calorie target matched to your goal.</p>
+    <div class="calc-wrap fade-in">
+      <div>
+        <div class="calc-form">
+          <div class="field">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="e.g. 28" min="10" max="100"/>
+          </div>
+          <div class="dual-row">
+            <div class="field">
+              <label>Gender</label>
+              <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Height (cm)</label>
+              <input type="number" id="height" placeholder="175"/>
+            </div>
+          </div>
+          <div class="field">
+            <label>Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 75"/>
+          </div>
+          <div class="field">
+            <label>Activity Level</label>
+            <select id="activity">
+              <option value="1.2">Sedentary (desk job, no exercise)</option>
+              <option value="1.375">Lightly Active (1–3 days/week)</option>
+              <option value="1.55">Moderately Active (3–5 days/week)</option>
+              <option value="1.725">Very Active (6–7 days/week)</option>
+              <option value="1.9">Athlete (training 2× daily)</option>
+            </select>
+          </div>
+          <button class="calc-submit" onclick="calculate()">⚡ Calculate My Plan</button>
+        </div>
+      </div>
+      <div class="result-box" id="resultBox">
+        <p style="color:var(--muted);font-size:15px;text-align:center">Fill in your details and tap Calculate to see your personalised numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ NUTRITION ══════════════════ -->
+<section id="nutrition">
+  <div class="container">
+    <div class="sec-label">Eat Smart</div>
+    <div class="goal-banner" id="mealsBanner">🔥 Fat Loss Meals</div>
+    <h2 class="sec-title">YOUR DAILY<br>MEAL PLAN</h2>
+    <p class="sec-sub" id="mealsSub">Meals crafted to support your specific goal — every macro counts.</p>
+    <div class="meals-grid section-dynamic" id="mealsGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ WORKOUT ══════════════════ -->
+<section id="workout">
+  <div class="container">
+    <div class="sec-label">Move & Grow</div>
+    <div class="goal-banner" id="workoutBanner">🔥 Fat Loss Workouts</div>
+    <h2 class="sec-title">WEEKLY WORKOUT<br>SCHEDULE</h2>
+    <p class="sec-sub" id="workoutSub">A structured weekly plan built around your goal.</p>
+    <div class="workout-grid section-dynamic" id="workoutGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ TRACKER ══════════════════ -->
+<section id="tracker">
+  <div class="container">
+    <div class="sec-label">Stay Consistent</div>
+    <h2 class="sec-title">DAILY HABIT<br>TRACKER</h2>
+    <p class="sec-sub">Track your daily habits and log your weight weekly to stay on course.</p>
+    <div class="tracker-inner fade-in">
+      <h3>Today's Habits</h3>
+      <p>Tap + / − to update your progress</p>
+      <div class="habit-rows" id="habitRows"></div>
+      <div class="weight-log-wrap">
+        <h3>📓 Weekly Progress Log</h3>
+        <div class="log-form">
+          <div class="field"><label>Date</label><input type="date" id="logDate"/></div>
+          <div class="field"><label>Weight (kg)</label><input type="number" id="logWeight" placeholder="e.g. 74.5" step="0.1"/></div>
+          <div class="field"><label>Note</label><input type="text" id="logNote" placeholder="How do you feel?"/></div>
+          <button class="calc-submit" onclick="addLog()" style="padding:13px 18px">Add</button>
+        </div>
+        <div class="log-entries" id="logEntries">
+          <p style="color:var(--muted);font-size:13px;padding:12px 0">No entries yet — start logging!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TIPS ══════════════════ -->
+<section id="tips">
+  <div class="container">
+    <div class="sec-label">Expert Advice</div>
+    <div class="goal-banner" id="tipsBanner">🔥 Fat Loss Tips</div>
+    <h2 class="sec-title">INSIDER TIPS<br>FOR YOUR GOAL</h2>
+    <p class="sec-sub" id="tipsSub">Evidence-based strategies to accelerate and sustain your results.</p>
+    <div class="tips-grid section-dynamic" id="tipsGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <img class="footer-icon" src="assets/favicon.svg" alt="BurnFlow"/>
+    <div class="footer-wordmark">
+      <div class="footer-name">BURNFLOW</div>
+      <div class="footer-tagline">Flow with purpose. Burn with intention.</div>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="#goal-select">Choose Goal</a>
+    <a href="#steps">Action Plan</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#nutrition">Meals</a>
+    <a href="#workout">Workout</a>
+    <a href="#tracker">Tracker</a>
+    <a href="#tips">Tips</a>
+  </div>
+  <div class="footer-divider"></div>
+  <p>Personalised fitness for every body, every goal. Results require consistency and patience.</p>
+  <p style="margin-top:8px;font-size:11px;opacity:.6">⚠️ Always consult a healthcare professional before starting a new diet or exercise program.</p>
+  <p style="margin-top:16px;font-size:11px;opacity:.4">© 2025 BurnFlow. Built with ❤️ and open-sourced on GitHub.</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+</body>
+</html>
